@@ -4,7 +4,6 @@ const {
     orders_detail,
     users
 } = require('../model');
-const model = require('../model');
 
 // function untuk create
 const create = async (req, res) => {

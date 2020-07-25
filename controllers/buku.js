@@ -1,11 +1,12 @@
 const { Op } = require('sequelize');
 const {
     buku,
+    kategori,
 } = require('../model');
 // function untuk create
 const create = async (req, res) => {
     try {
-        const params = (req.body);
+        const params = {...req.body, ...{image_url: req.file.path}};
         const data = await buku.create(params);
         // return dengan status sukses
         return res.status(200).send({
@@ -50,7 +51,7 @@ const get_by_id = async (req, res) => {
 }
 const update_by_id = async (req, res) => {
     try {
-        const params = (req.body);
+        const params = {...req.body, ...{image_url: req.file.path}};
         // find detail by PK,
         // jika tidak di temukan, akan di reject
         const data = await buku.findByPk(req.params.id);
